@@ -60,6 +60,10 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | b
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
+# install npm package
+RUN npm -g i sails@0.12.3 grunt bower pm2 && \
+    npm cache clean
+
 # Set environment variables.
 ENV HOME /root
 
