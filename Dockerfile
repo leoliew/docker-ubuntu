@@ -38,6 +38,9 @@ RUN apt-get install -y -q --no-install-recommends \
         rsync \
         software-properties-common \
         wget \
+        libkrb5-dev \
+        python-hiredis \
+        unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Replace shell with bash so we can source files
