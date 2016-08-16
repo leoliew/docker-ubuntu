@@ -5,7 +5,6 @@
 #
 # Pull base image.
 FROM ubuntu:14.04
-
 MAINTAINER Leo Liu <zmliu0077@gmail.com>
 
 #update apt source list,Backup the original configuration file
@@ -28,7 +27,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install base dependencies
-RUN apt-get update && apt-get install -y -q --no-install-recommends \
+RUN apt-get install -y -q --no-install-recommends \
         apt-transport-https \
         build-essential \
         ca-certificates \
@@ -40,6 +39,26 @@ RUN apt-get update && apt-get install -y -q --no-install-recommends \
         software-properties-common \
         wget \
     && rm -rf /var/lib/apt/lists/*
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Set debconf to run non-interactively
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Define nodejs env
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 4.4.7
+
+# Install nvm with node and npm
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash \
+    && source $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # Set environment variables.
 ENV HOME /root
