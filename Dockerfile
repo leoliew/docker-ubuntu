@@ -41,6 +41,7 @@ RUN apt-get install -y -q --no-install-recommends \
         libkrb5-dev \
         python-hiredis \
         unzip \
+        vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Replace shell with bash so we can source files
@@ -65,7 +66,7 @@ ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # install npm package
 RUN source $NVM_DIR/nvm.sh && \
-    npm -g i sails@0.12.3 grunt-cli bower pm2 && \
+    npm -g i sails@0.12.3 grunt-cli bower pm2 nodemon && \
     npm cache clean
 
 # Set environment variables.
