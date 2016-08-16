@@ -27,6 +27,20 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted unive
 RUN apt-get update
 RUN apt-get upgrade -y
 
+# Install base dependencies
+RUN apt-get update && apt-get install -y -q --no-install-recommends \
+        apt-transport-https \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        libssl-dev \
+        python \
+        rsync \
+        software-properties-common \
+        wget \
+    && rm -rf /var/lib/apt/lists/*
+
 # Set environment variables.
 ENV HOME /root
 
