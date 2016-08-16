@@ -61,7 +61,8 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # install npm package
-RUN npm -g i sails@0.12.3 grunt bower pm2 && \
+RUN source $NVM_DIR/nvm.sh && \
+    npm -g i sails@0.12.3 grunt-cli bower pm2 && \
     npm cache clean
 
 # Set environment variables.
