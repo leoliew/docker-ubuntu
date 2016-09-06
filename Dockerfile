@@ -73,6 +73,8 @@ RUN source $NVM_DIR/nvm.sh && \
 
 # Set environment variables.
 ENV HOME /root
+ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # Define working directory.
 WORKDIR /root
