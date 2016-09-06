@@ -66,6 +66,8 @@ ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # install npm package
 RUN source $NVM_DIR/nvm.sh && \
+    npm -g i npm nrm && \
+    nrm use taobao && \
     npm -g i sails@0.12.3 grunt-cli bower pm2 nodemon && \
     npm cache clean
 
