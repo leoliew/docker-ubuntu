@@ -59,7 +59,7 @@ ENV NODE_VERSION 4.4.7
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash \
     && source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
+    && nvm install $NODE_VERSION --disturl=https://npm.taobao.org/dist \
     && nvm alias default $NODE_VERSION \
     && nvm use default
 
@@ -68,7 +68,7 @@ ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # install npm package
 RUN source $NVM_DIR/nvm.sh && \
-    npm -g i npm nrm && \
+    npm -g i npm nrm --registry=https://registry.npm.taobao.org && \
     nrm use taobao && \
     npm -g i sails@0.12.3 grunt-cli bower pm2 nodemon node-gyp && \
     npm cache clean
