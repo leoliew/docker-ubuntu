@@ -70,7 +70,7 @@ ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 RUN source $NVM_DIR/nvm.sh && \
     npm -g i npm nrm && \
     nrm use taobao && \
-    npm -g i sails@0.12.3 grunt-cli bower pm2 nodemon node-gyp && \
+    npm -g i sails@0.12.3 grunt-cli bower pm2 node-gyp && \
     npm cache clean
 
 # Set environment variables.
