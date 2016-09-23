@@ -33,6 +33,7 @@ RUN apt-get install -y -q --no-install-recommends \
         ca-certificates \
         curl \
         git \
+        uuid \
         gcc \
         g++ \
         libssl-dev \

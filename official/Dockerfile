@@ -19,6 +19,7 @@ RUN apt-get install -y -q --no-install-recommends \
         curl \
         git \
         gcc \
+        uuid \
         g++ \
         libssl-dev \
         python \
