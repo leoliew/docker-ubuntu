@@ -17,19 +17,11 @@ RUN apt-get install -y -q --no-install-recommends \
         build-essential \
         ca-certificates \
         curl \
-        git \
         gcc \
-        uuid \
         g++ \
         libssl-dev \
         python \
-        rsync \
         software-properties-common \
-        wget \
-        libkrb5-dev \
-        python-hiredis \
-        unzip \
-        vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Replace shell with bash so we can source files
@@ -51,12 +43,6 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | b
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
-
-# install npm package
-RUN source $NVM_DIR/nvm.sh && \
-    npm -g i npm && \
-    npm -g i sails@0.12.3 grunt-cli bower pm2 node-gyp && \
-    npm cache clean
 
 # Set environment variables.
 ENV HOME /root
