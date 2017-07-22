@@ -46,8 +46,7 @@ ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # install npm package
 RUN source $NVM_DIR/nvm.sh && \
-    npm -g i http-server bower && \
-    npm cache clean
+    npm -g i http-server bower 
 
 # Set environment variables.
 ENV HOME /root
